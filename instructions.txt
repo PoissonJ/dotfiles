@@ -1,0 +1,6 @@
+Instructions for linking home directory dotfile to this directory:
+
+.vimrc for example
+
+- mv ~/.vimrc .
+- ln -sf ~/dotfiles/.vimrc ~/vimrc
