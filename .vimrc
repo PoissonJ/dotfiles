@@ -1,3 +1,5 @@
+set wildmenu
+set wildmode=full
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
 
@@ -22,10 +24,6 @@ let mapleader = ","
 
 " Simple shortcut to align tsv files
 noremap <leader>A :%!column -t<CR>
-
-" Scroll down 6 lines. Useful after searches when the found item is at the
-" bottom of the screen
-noremap <leader>j jjjjjj
 
 " Horizontal scrolling
 map L 20zl
