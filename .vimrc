@@ -249,7 +249,7 @@ map <leader>n :NERDTreeToggle<CR>
 "let g:syntastic_check_on_wq = 0
 
 "vim-figitive
-set statusline+=%{fugitive#statusline()}  " Add git to status line
+"set statusline+=%{fugitive#statusline()}  " Add git to status line
 
 "tagbar
 nmap <leader>t :TagbarToggle<CR>  
