@@ -279,3 +279,4 @@ vmap <Leader>a: :Tabularize /:\zs<CR>
 
 "minibufexpl
 nmap <leader>M :MBEbd<CR>
+nmap <leader>T :MBEToggle<cr>
