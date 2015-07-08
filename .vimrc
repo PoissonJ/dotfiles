@@ -238,15 +238,6 @@ map <leader>n :NERDTreeToggle<CR>
 "NERDCommenter
 "leadercc  Comment out the current line or text in visual mode
 
-"Syntastic
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 0
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
 
 "vim-figitive
 "set statusline+=%{fugitive#statusline()}  " Add git to status line
@@ -280,3 +271,15 @@ vmap <Leader>a: :Tabularize /:\zs<CR>
 "minibufexpl
 nmap <leader>M :MBEbd<CR>
 nmap <leader>T :MBEToggle<cr>
+
+"Syntastic
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 0
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+let g:syntastic_python_flake8_args='--ignore=E501'
+nmap <leader>S :SyntasticToggleMode<CR>  
