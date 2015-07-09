@@ -283,3 +283,6 @@ nmap <leader>T :MBEToggle<cr>
 "let g:syntastic_check_on_wq = 0
 let g:syntastic_python_flake8_args='--ignore=E501'
 nmap <leader>S :SyntasticToggleMode<CR>  
+
+" vim-notes
+let g:notes_directories = ['~/Documents/notes']
