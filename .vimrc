@@ -26,6 +26,8 @@ Plugin 'mbbill/undotree'
 Plugin 'vim-scripts/csv.vim'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
+"Plugin 'Raimondi/delimitMate'
+Plugin 'ervandew/matchem'
 
 
 
@@ -337,5 +339,5 @@ nmap <leader>S :SyntasticToggleMode<CR>
 let g:notes_directories = ['~/Documents/notes']
 
 "YouCompleteMe
-let g:ycm_global_ycm_extra_conf = '.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
