@@ -31,6 +31,7 @@ Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
 "Plugin 'Raimondi/delimitMate'
 Plugin 'ervandew/matchem'
+Plugin 'tmhedberg/SimpylFold'
 
 
 
@@ -48,6 +49,7 @@ filetype plugin indent on    " required
 " :PluginClean      - confirms removal of unused plugins; append `!` to
 "auto-approve removal
 "
+
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 "
@@ -139,6 +141,7 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 " Color scheme
 " mkdir -p ~/.vim/colors && cd ~/.vim/colors
 " wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
+
 set t_Co=256
 color wombat256mod
 
@@ -261,9 +264,9 @@ map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 set completeopt=longest,menuone
 function! OmniPopup(action)
     if pumvisible()
-        if a:action == 'j'
+        if a:action == '\<C-j>'
             return "\<C-N>"
-        elseif a:action == 'k'
+        elseif a:action == '\<C-k>'
             return "\<C-P>"
         endif
     endif
@@ -277,7 +280,14 @@ inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 " Python folding
 " mkdir -p ~/.vim/ftplugin
 " wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php?src_id=5492
-set nofoldenable
+"set foldenable
+"set foldmethod=manual
+nnoremap <space> za
+vnoremap <space> zf
+"SimpylFold
+let g:SimpylFold_docstring_preview = 1
+autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
+autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
 
 "nerd-tree
 map <leader>n :NERDTreeToggle<CR>
@@ -335,7 +345,7 @@ nmap <leader>T :MBEToggle<cr>
 "let g:syntastic_auto_loc_list = 0
 "let g:syntastic_check_on_open = 1
 "let g:syntastic_check_on_wq = 0
-let g:syntastic_python_flake8_args='--ignore=E501'
+let g:syntastic_python_flake8_args='--ignore=E501, W391'
 nmap <leader>S :SyntasticToggleMode<CR>  
 
 " vim-notes
