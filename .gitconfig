@@ -1,0 +1,7 @@
+[user]
+	name = Jonathan
+	email = poissonj@ufl.edu
+[push]
+	default = simple
+[core]
+	editor = vim
