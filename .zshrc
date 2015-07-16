@@ -5,7 +5,7 @@ export ZSH=/home/jonathan/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="muse"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -86,10 +86,6 @@ source $ZSH/oh-my-zsh.sh
 ##################################
 ###########Custom################
 #
-#virtualenv settings
-#export WORKON_HOME=$HOME/.virtualenvs
-#export PROJECT_HOME=$HOME/home/jonathan/django
-#source /usr/local/bin/virtualenvwrapper.sh
 
 # Map 'jk' to escape to vi-mode instead of escape
 bindkey -M viins 'jk' vi-cmd-mode
