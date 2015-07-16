@@ -184,7 +184,7 @@ set nowritebackup
 set noswapfile
 
 " Set jk to be escape
-imap jk <Esc>
+imap jk <Esc>l
 
 " Settings for CSV and TSV Files
 " CSV
