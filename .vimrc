@@ -262,8 +262,8 @@ function! OmniPopup(action)
     return a:action
 endfunction
 
-inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
-inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
+inoremap <silent><C-j> <C-R>=OmniPopup('\<C-j>')<CR>
+inoremap <silent><C-k> <C-R>=OmniPopup('\<C-k>')<CR>
 
 
 " Python folding
