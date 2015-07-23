@@ -298,7 +298,6 @@ map <leader>n :NERDTreeToggle<CR>
 
 "tagbar
 nmap <leader>t :TagbarToggle<CR>  
-autocmd FileType c,cpp,python nested :TagbarOpen
 
 "scratch.vim
 "gs to open the scratch window or :Scratch
