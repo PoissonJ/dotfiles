@@ -34,7 +34,6 @@ Plugin 'ervandew/matchem'
 Plugin 'tmhedberg/SimpylFold'
 
 
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -343,3 +342,5 @@ let g:notes_directories = ['~/Documents/notes']
 "YouCompleteMe
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
+"https://github.com/vim-scripts/closetag.vim
+autocmd BufRead,BufNewFile *.html,*.xml,*.xsl source ~/.vim/ftplugin/closetag.vim/plugin/closetag.vim
