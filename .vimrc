@@ -297,8 +297,7 @@ autocmd FileType c,cpp :set foldmethod=syntax
 " YouCompleteMe {{{
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 " }}}
-"}}}
+" }}}
 
 " Create the folding you see above :)
-"set foldenable
-"set foldmethod=manual
+" vim:foldmethod=marker:foldlevel=0
