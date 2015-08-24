@@ -31,10 +31,13 @@ Plugin 'tpope/vim-surround'
 Plugin 'mbbill/undotree'
 Plugin 'vim-scripts/csv.vim'
 Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-notes'
+"Plugin 'xolox/vim-notes'
 "Plugin 'Raimondi/delimitMate'
 Plugin 'ervandew/matchem'
 Plugin 'tmhedberg/SimpylFold'
+"Plugin 'tpope/vim-markdown'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 
 " All of your Plugins must be added before the following line
@@ -286,7 +289,7 @@ let g:syntastic_python_flake8_args='--ignore=E501, W391'
 nmap <leader>S :SyntasticToggleMode<CR>  
 " }}}
 " Notes {{{
-let g:notes_directories = ['~/Documents/notes']
+"let g:notes_directories = ['~/Documents/notes']
 " }}}
 " Simpyl Fold {{{
 let g:SimpylFold_docstring_preview = 1
@@ -296,6 +299,9 @@ autocmd FileType c,cpp :set foldmethod=syntax
 " }}}
 " YouCompleteMe {{{
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+" }}}
+" {{{ Markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " }}}
 " }}}
 
