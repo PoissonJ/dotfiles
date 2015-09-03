@@ -143,6 +143,9 @@ au BufRead,BufNewfile *.tsv set nonumber
 " Escape {{{
 imap jk <Esc>l
 " }}}
+" White Space{{{
+nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+" }}}
 " Leader {{{
 let mapleader = ","
 " }}}
@@ -257,7 +260,7 @@ map <leader>n :NERDTreeToggle<CR>
 "<,>cc  Comment out the current line or text in visual mode
 " }}}
 " Tagbar {{{
-nmap <leader>t :TagbarToggle<CR>  
+nmap <leader>t :TagbarToggle<CR>
 " }}}
 " Scratch {{{
 "scratch.vim
@@ -286,7 +289,7 @@ nmap <leader>T :MBEToggle<cr>
 " }}}
 " Syntastic {{{
 let g:syntastic_python_flake8_args='--ignore=E501, W391'
-nmap <leader>S :SyntasticToggleMode<CR>  
+nmap <leader>S :SyntasticToggleMode<CR>
 " }}}
 " Notes {{{
 "let g:notes_directories = ['~/Documents/notes']
@@ -302,6 +305,7 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/
 " }}}
 " {{{ Markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+"autocmd BufNewFile,BufReadPost *.md set colorscheme=morning
 " }}}
 " }}}
 
