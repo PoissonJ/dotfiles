@@ -334,7 +334,9 @@ nmap <leader>T :MBEToggle<cr>
 "let g:syntastic_check_on_open = 1
 "let g:syntastic_check_on_wq = 0
 let g:syntastic_python_flake8_args='--ignore=E501, W391'
-nmap <leader>S :SyntasticToggleMode<CR>  
+nmap <leader>S :SyntasticToggleMode<CR>
+let g:syntastic_cpp_compiler = 'g++'
+let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
 
 " vim-notes
 let g:notes_directories = ['~/Documents/notes']
