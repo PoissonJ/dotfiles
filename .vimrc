@@ -83,6 +83,9 @@ highlight ColorColumn ctermbg=233
 set wildmenu
 set wildmode=full
 " }}}
+" Shell {{{
+set shell=/usr/bin/zsh
+" }}}
 " Copy & Paste {{{
 " When you want to paste large blocks of code into vim, press F2 before you
 " paste. At the bottom you should see ``-- INSERT (paste) --``.
