@@ -87,7 +87,6 @@ alias panda="pandoc *.md -o notes.pdf --highlight-style tango"
 alias notes="cd ~/Documents/notes"
 alias push="git push"
 alias pull="git pull"
-alias galaxy="cd ~/devel/GalaxyTools"
 
 ##################################
 ###########Custom################
