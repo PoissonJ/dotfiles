@@ -90,6 +90,7 @@ alias pull="git pull"
 alias galaxy="cd ~/devel/GalaxyTools"
 alias dotfiles="cd ~/dotfiles"
 alias trackpoint="sudo configure-trackpoint"
+alias power="sudo poweroff"
 
 ##################################
 ###########Custom################
