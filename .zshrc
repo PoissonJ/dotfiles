@@ -99,3 +99,4 @@ alias power="sudo poweroff"
 # Map 'jk' to escape to vi-mode instead of escape
 bindkey -M viins 'jk' vi-cmd-mode
 
+figlet -cf slant "Poisson"
