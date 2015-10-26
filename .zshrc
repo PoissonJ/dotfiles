@@ -92,6 +92,7 @@ alias galaxy="cd ~/devel/GalaxyTools"
 alias dotfiles="cd ~/dotfiles"
 alias trackpoint="sudo configure-trackpoint"
 alias power="sudo poweroff"
+alias ="fg"
 
 ##################################
 ###########Custom################
