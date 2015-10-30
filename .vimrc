@@ -152,6 +152,13 @@ let mapleader = ","
 " Spelling {{{
 nmap <F6> :setlocal spell! spelllang=en<CR>
 " }}}
+" Tabs {{{
+" Reset 4 spaces to 2 spaces
+nmap <F7> :set ts=4 sts=4 noet<CR>:retab!<CR>:set ts=2 sts=2 et<CR>:retab<CR>
+
+" Reset 2 spaces to 4 spaces
+nmap <F8> :set ts=2 sts=2 noet<CR>:retab!<CR>:set ts=4 sts=4 et<CR>:retab<CR>
+" }}}
 " Horizontal Scrolling {{{
 map L 20zl
 map H 20zh
