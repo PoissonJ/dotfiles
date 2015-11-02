@@ -110,9 +110,11 @@ set undolevels=700
 " }}}
 " Tabs and Spacing {{{
 " Real programmers don't use TABs but spaces
-set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+au BufRead,BufNewfile *.rb set tabstop=2
+au BufRead,BufNewfile *.rb set softtabstop=2
+au BufRead,BufNewfile *.rb set shiftwidth=2
 set shiftround
 set expandtab
 " }}}
