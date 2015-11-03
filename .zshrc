@@ -1,3 +1,4 @@
+
 # Path to your oh-my-zsh installation.
 export ZSH=/home/jonathan/.oh-my-zsh
 
@@ -53,7 +54,7 @@ plugins=(git virtualenvwrapper vi-mode)
 
 # User configuration
 
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$HOME/.rbenv/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/home/jonathan/anaconda/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH="/usr/local/sbin:/usr/local/mysql/bin:/home/jonathan/anaconda/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -104,3 +105,7 @@ bindkey -M viins 'jk' vi-cmd-mode
 
 figlet -f slant "Poisson"
 fortune | cowsay -f tux
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+source /usr/local/rvm/scripts/rvm
+
+
