@@ -95,6 +95,7 @@ alias dotfiles="cd ~/dotfiles"
 alias trackpoint="sudo configure-trackpoint"
 alias power="sudo poweroff"
 alias ="fg"
+alias bluetooth="sudo rfkill unblock bluetooth"
 
 ##################################
 ###########Custom################
@@ -105,7 +106,9 @@ bindkey -M viins 'jk' vi-cmd-mode
 
 figlet -f slant "Poisson"
 fortune | cowsay -f tux
-#[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-source /usr/local/rvm/scripts/rvm
 
+
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
 
