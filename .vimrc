@@ -184,7 +184,7 @@ cmap Wq wq
 cmap W w
 cmap Q q
 " }}}
-" ':' {{{
+" ':' {{{"{{{
 nnoremap ; :
 " }}}
 " Movement {{{
@@ -201,7 +201,7 @@ map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
 " }}}
 
-" }}}
+" }}}"}}}
 " Sort {{{
 vnoremap <Leader>s :sort<CR>
 " }}}
@@ -239,6 +239,10 @@ inoremap <silent><C-k> <C-R>=OmniPopup('\<C-k>')<CR>
 nnoremap <space> za
 vnoremap <space> zf
 " }}}
+" rspec {{{
+map <leader>r :! rspec % <cr>
+" }}}
+
 " }}}
 
 " Plugin settings and help {{{
@@ -322,6 +326,14 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/
 " {{{ Markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 "autocmd BufNewFile,BufReadPost *.md set colorscheme=morning
+let g:tagbar_type_markdown = {
+    \ 'ctagstype' : 'markdown',
+    \ 'kinds' : [
+        \ 'h:Heading_L1',
+        \ 'i:Heading_L2',
+        \ 'k:Heading_L3'
+    \ ]
+\ }
 " }}}
 " }}}
 
