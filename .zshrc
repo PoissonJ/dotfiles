@@ -50,7 +50,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git virtualenvwrapper vi-mode)
+plugins=(git vwrapper vi-mode)
 
 # User configuration
 
@@ -105,8 +105,7 @@ alias bluetooth="sudo rfkill unblock bluetooth"
 bindkey -M viins 'jk' vi-cmd-mode
 
 figlet -f slant "Poisson"
-fortune | cowsay -f tux
-
+archey3
 
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
