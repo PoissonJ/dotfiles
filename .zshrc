@@ -96,6 +96,8 @@ alias trackpoint="sudo configure-trackpoint"
 alias power="sudo poweroff"
 alias ="fg"
 alias bluetooth="sudo rfkill unblock bluetooth"
+alias home_wifi="sudo ip link set wlp3s0 down && sudo netctl start home_wifi"
+alias i3_config="vim ~/.config/i3/config"
 
 ##################################
 ###########Custom################
