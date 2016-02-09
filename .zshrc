@@ -95,9 +95,13 @@ alias dotfiles="cd ~/dotfiles"
 alias trackpoint="sudo configure-trackpoint"
 alias power="sudo poweroff"
 alias ="fg"
-alias bluetooth="sudo rfkill unblock bluetooth"
+alias bluetooth_on="sudo rfkill unblock bluetooth"
+alias bluetooth_off="sudo rfkill block bluetooth"
 alias home_wifi="sudo ip link set wlp3s0 down && sudo netctl start home_wifi"
+alias uf_wifi="sudo ip link set wlp3s0 down && sudo netctl start uf_wifi"
 alias i3_config="vim ~/.config/i3/config"
+# alias xset for mouse
+alias ssh_minix="ssh -p 3022 root@localhost"
 
 ##################################
 ###########Custom################
