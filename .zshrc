@@ -102,6 +102,7 @@ alias uf_wifi="sudo ip link set wlp3s0 down && sudo netctl start uf_wifi"
 alias i3_config="vim ~/.config/i3/config"
 # alias xset for mouse
 alias ssh_minix="ssh -p 3022 root@localhost"
+alias thunder_uf = "ssh -l jpoisson thunder.cise.ufl.edu"
 
 ##################################
 ###########Custom################
