@@ -59,6 +59,7 @@ export PATH="/usr/local/sbin:/usr/local/mysql/bin:/home/jonathan/anaconda/bin:/u
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
+export EDITOR="/usr/bin/vim"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -102,7 +103,8 @@ alias uf_wifi="sudo ip link set wlp3s0 down && sudo netctl start uf_wifi"
 alias i3_config="vim ~/.config/i3/config"
 # alias xset for mouse
 alias ssh_minix="ssh -p 3022 root@localhost"
-alias thunder_uf = "ssh -l jpoisson thunder.cise.ufl.edu"
+alias thunder_uf="ssh -l jpoisson thunder.cise.ufl.edu"
+alias matrix="cmatrix"
 
 ##################################
 ###########Custom################
