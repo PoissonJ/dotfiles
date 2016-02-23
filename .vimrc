@@ -89,6 +89,9 @@ set shell=/usr/bin/zsh
 " Copy & Paste {{{
 " When you want to paste large blocks of code into vim, press F2 before you
 " paste. At the bottom you should see ``-- INSERT (paste) --``.
+nnoremap <leader>y *y
+nnoremap <leader>p *p
+nnoremap <leader>P *P
 set pastetoggle=<F2>
 set clipboard=unnamed
 " }}}
