@@ -114,6 +114,7 @@ alias matrix="cmatrix"
 bindkey -M viins 'jk' vi-cmd-mode
 
 figlet -f slant "Poisson"
+./devel/days_until_finals.py
 archey3
 
 
