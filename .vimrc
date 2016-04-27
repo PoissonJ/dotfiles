@@ -324,7 +324,9 @@ autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
 autocmd FileType c,cpp :set foldmethod=syntax
 " }}}
 " YouCompleteMe {{{
+let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_server_use_vim_stdout = 0
 " }}}
 " {{{ Markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
