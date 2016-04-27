@@ -114,10 +114,4 @@ alias matrix="cmatrix"
 bindkey -M viins 'jk' vi-cmd-mode
 
 figlet -f slant "Poisson"
-./devel/days_until_finals.py
-archey3
-
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
-
+screenfetch
