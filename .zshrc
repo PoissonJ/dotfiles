@@ -104,7 +104,12 @@ alias i3_config="vim ~/.config/i3/config"
 # alias xset for mouse
 alias ssh_minix="ssh -p 3022 root@localhost"
 alias thunder_uf="ssh -l jpoisson thunder.cise.ufl.edu"
+alias ssh_jpblog="ssh root@45.55.141.161"
+alias ssh_jpblog_safe="ssh safeuser@45.55.141.161"
 alias matrix="cmatrix"
+alias mongodb_start="sudo systemctl start mongodb"
+alias mongodb_status="sudo systemctl status mongodb"
+alias mongodb_stop="sudo systemctl stop mongodb"
 
 ##################################
 ###########Custom################
