@@ -1,6 +1,6 @@
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/jonathan/.oh-my-zsh
+export ZSH=/home/joanthan/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -55,6 +55,7 @@ plugins=(git vwrapper vi-mode)
 # User configuration
 
 export PATH="/usr/local/sbin:/usr/local/mysql/bin:/home/jonathan/anaconda/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH=/usr/local/share/npm/bin:$PATH
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
