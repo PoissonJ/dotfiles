@@ -1,6 +1,6 @@
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/joanthan/.oh-my-zsh
+export ZSH=/home/jonathan/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -121,3 +121,6 @@ bindkey -M viins 'jk' vi-cmd-mode
 
 figlet -f slant "Poisson"
 screenfetch
+
+export NVM_DIR="/home/jonathan/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
