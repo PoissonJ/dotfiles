@@ -1,3 +1,7 @@
+[[ $TERM = "xterm" ]] && { tmux && exit 0; }
+# Color scheme
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/jonathan/.oh-my-zsh
@@ -54,8 +58,12 @@ plugins=(git vwrapper vi-mode)
 
 # User configuration
 
-export PATH="/usr/local/sbin:/usr/local/mysql/bin:/home/jonathan/anaconda/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/home/jonathan/anaconda/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 export PATH=/usr/local/share/npm/bin:$PATH
+export PATH=~/.local/bin:$PATH
+export PYTHONPATH=~/git/CowPattie
+export PYTHONPATH=~/git/keys-please:$PYTHONPATH
+export PYTHONDONTWRITEBYTECODE=True
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -119,8 +127,20 @@ alias mongodb_stop="sudo systemctl stop mongodb"
 # Map 'jk' to escape to vi-mode instead of escape
 bindkey -M viins 'jk' vi-cmd-mode
 
-figlet -f slant "Poisson"
-screenfetch
+# figlet -f slant "Poisson"
+# screenfetch
 
 export NVM_DIR="/home/jonathan/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# where to store our virtual envs
+export WORKON_HOME=$HOME/virtenvs
+# where projects will reside
+export PROJECT_HOME=$HOME/git
+# where is the virtualenvwrapper.sh
+source $HOME/.local/bin/virtualenvwrapper.sh
+
+# Z setup
+. $HOME/z/z.sh
+
+#Sol config
+alias sol="KUBECONFIG=~/.kube/solconfig kubectl"
