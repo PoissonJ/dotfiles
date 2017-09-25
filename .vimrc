@@ -35,6 +35,8 @@ Plugin 'ervandew/matchem'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'fatih/vim-go'
 
 
 " All of your Plugins must be added before the following line
@@ -84,7 +86,7 @@ set wildmenu
 set wildmode=full
 " }}}
 " Shell {{{
-set shell=/usr/bin/zsh
+set shell=/usr/local/bin/zsh
 " }}}
 " Copy & Paste {{{
 " When you want to paste large blocks of code into vim, press F2 before you
@@ -94,7 +96,7 @@ set shell=/usr/bin/zsh
 "nnoremap <leader>Y "+P
 "nnoremap <leader>P "+P
 set pastetoggle=<F2>
-set clipboard=unnamedplus
+set clipboard=unnamed
 " }}}
 " Mouse and backspace {{{
 set mouse=a  " on OSX press ALT and click

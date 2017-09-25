@@ -4,7 +4,7 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/jonathan/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -144,3 +144,9 @@ source $HOME/.local/bin/virtualenvwrapper.sh
 
 #Sol config
 alias sol="KUBECONFIG=~/.kube/solconfig kubectl"
+export PATH="/usr/local/opt/vim@7.4/bin:$PATH"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="$PATH:/usr/bin/python"
+export PATH="$PATH:/usr/local/go/bin"
