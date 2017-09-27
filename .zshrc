@@ -1,8 +1,5 @@
 [[ $TERM = "xterm" ]] && { tmux && exit 0; }
-# Color scheme
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-
+#
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -55,7 +52,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vwrapper vi-mode)
+plugins=(gitfast vwrapper vi-mode brew docker)
 
 # User configuration
 
@@ -141,7 +138,7 @@ export PROJECT_HOME=$HOME/git
 source $HOME/.local/bin/virtualenvwrapper.sh
 
 # Z setup
-. $HOME/z/z.sh
+. /usr/local/etc/profile.d/z.sh
 
 #Sol config
 alias sol="KUBECONFIG=~/.kube/solconfig kubectl"
