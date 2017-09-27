@@ -151,3 +151,8 @@ export PATH="/usr/local/opt/vim@7.4/bin:$PATH"
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:/usr/bin/python"
 export PATH="$PATH:/usr/local/go/bin"
+
+# Start tmux
+tmux
+# clear terminal
+clear
