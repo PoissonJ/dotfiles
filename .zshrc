@@ -147,7 +147,8 @@ export PATH="/usr/local/opt/vim@7.4/bin:$PATH"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:/usr/bin/python"
-export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:$HOME/go/bin"
+export GOPATH="$HOME/go"
 
 # Start tmux
 tmux
