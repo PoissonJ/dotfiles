@@ -16,13 +16,14 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'Lokaltog/vim-powerline'
+"Plugin 'Lokaltog/vim-powerline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
-Plugin 'mtth/scratch.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -37,6 +38,10 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'fatih/vim-go'
+Plugin 'sebdah/vim-delve'
+Plugin 'tpope/vim-git'
+Plugin 'JamshedVesuna/vim-markdown-preview'
+Plugin 'lifepillar/vim-solarized8'
 
 
 " All of your Plugins must be added before the following line
@@ -252,13 +257,20 @@ map <leader>r :! rspec % <cr>
 " }}}
 
 " Plugin settings and help {{{
-" Powerline {{{
+" Airline {{{
+set noshowcmd
 set laststatus=2
+let g:airline_theme='dark'
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#ycm#enabled = 1
 " }}}
 " Ctrlp {{{
 set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
+set wildignore+=*.coverprofile
+let g:ctrlp_custom_ignore = 'vendor'
 " }}}
 " Jedi {{{
 let g:jedi#usages_command = "<leader>z"
@@ -286,15 +298,11 @@ nmap <leader>t :TagbarToggle<CR>
 "gs to open the scratch window or :Scratch
 " }}}
 " UndoTree {{{
-if has("persistent_undo")
-    set undodir='~/.undodir/'
-    set undofile
-endif
+"if has("persistent_undo")
+    "set undodir='~/.undodir/'
+    "set undofile
+"endif
 nnoremap <leader>u :UndotreeToggle<cr>
-" }}}
-" Riv {{{
-let proj1 = { 'path': '~/rst' }
-let g:riv_projects = [proj1]
 " }}}
 " Tabular {{{
 nmap <Leader>a= :Tabularize /=<CR>
@@ -312,13 +320,8 @@ nmap <leader>S :SyntasticToggleMode<CR>
 let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
 
-" vim-notes
-let g:notes_directories = ['~/Documents/notes']
 
 "YouCompleteMe
-" }}}
-" Notes {{{
-"let g:notes_directories = ['~/Documents/notes']
 " }}}
 " Simpyl Fold {{{
 let g:SimpylFold_docstring_preview = 1
@@ -342,6 +345,10 @@ let g:tagbar_type_markdown = {
         \ 'k:Heading_L3'
     \ ]
 \ }
+" }}}
+" {{{ Markdown Preview
+let vim_markdown_preview_hotkey='<C-w>'
+let vim_markdown_preview_github=1
 " }}}
 " }}}
 
