@@ -22,11 +22,12 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'fholgado/minibufexpl.vim'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+"Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-surround'
 Plugin 'mbbill/undotree'
@@ -41,7 +42,10 @@ Plugin 'fatih/vim-go'
 Plugin 'sebdah/vim-delve'
 Plugin 'tpope/vim-git'
 Plugin 'JamshedVesuna/vim-markdown-preview'
-Plugin 'lifepillar/vim-solarized8'
+Plugin 'mileszs/ack.vim'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
 
 
 " All of your Plugins must be added before the following line
@@ -59,6 +63,8 @@ set number  " show line numbers
 set tw=79   " width of document (used by gd)
 set nowrap  " don't automatically wrap on load
 set fo-=t   " don't automatically wrap text when typing
+set encoding=utf8
+set guifont=Knack\ Nerd\ Font:h11
 " }}}
 " Whitespace {{{
 " MUST be inserted BEFORE the colorscheme command
@@ -254,6 +260,11 @@ vnoremap <space> zf
 map <leader>r :! rspec % <cr>
 " }}}
 
+" json formatting {{{
+nmap <leader>j :%!python -m json.tool <cr>
+" }}}
+
+
 " }}}
 
 " Plugin settings and help {{{
@@ -264,6 +275,8 @@ let g:airline_theme='dark'
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#ycm#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#branch#enabled = 1
 " }}}
 " Ctrlp {{{
 set wildignore+=*.pyc
@@ -279,6 +292,9 @@ let g:jedi#popup_select_first = 0
 " }}}
 " NERDtree {{{
 map <leader>n :NERDTreeToggle<CR>
+let g:NERDTreeDisableFileExtensionHighlight = 1
+let g:NERDTreeDisableExactMatchHighlight = 1
+let g:NERDTreeDisablePatternMatchHighlight = 1
 " }}}
 " Surround {{{
 " cs"' to change from "Hello world" to 'Hello world'
