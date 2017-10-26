@@ -271,7 +271,7 @@ nmap <leader>j :%!python -m json.tool <cr>
 " Airline {{{
 set noshowcmd
 set laststatus=2
-let g:airline_theme='dark'
+let g:airline_theme='badwolf'
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#ycm#enabled = 1
