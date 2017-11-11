@@ -118,6 +118,7 @@ alias mongodb_start="sudo systemctl start mongodb"
 alias mongodb_status="sudo systemctl status mongodb"
 alias mongodb_stop="sudo systemctl stop mongodb"
 alias vim="nvim"
+alias dm="docker-machine"
 
 ##################################
 ###########Custom################
