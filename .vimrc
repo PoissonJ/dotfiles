@@ -41,11 +41,13 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'fatih/vim-go'
 Plugin 'sebdah/vim-delve'
 Plugin 'tpope/vim-git'
-"Plugin 'JamshedVesuna/vim-markdown-preview'
+Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'mileszs/ack.vim'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
+Plugin 'shawncplus/phpcomplete.vim'
+
 
 
 " All of your Plugins must be added before the following line
@@ -161,6 +163,9 @@ au BufRead,BufNewfile *.tsv set nonumber
 " Custom Shortcuts {{{
 " Escape {{{
 imap jk <Esc>l
+" }}}
+" Increment {{{
+noremap <C-s> <C-a>
 " }}}
 " White Space{{{
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
@@ -295,6 +300,8 @@ map <leader>n :NERDTreeToggle<CR>
 let g:NERDTreeDisableFileExtensionHighlight = 1
 let g:NERDTreeDisableExactMatchHighlight = 1
 let g:NERDTreeDisablePatternMatchHighlight = 1
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " }}}
 " Surround {{{
 " cs"' to change from "Hello world" to 'Hello world'
@@ -365,6 +372,11 @@ let g:tagbar_type_markdown = {
 " {{{ Markdown Preview
 let vim_markdown_preview_hotkey='<C-w>'
 let vim_markdown_preview_github=1
+let vim_markdown_preview_browser='Google Chrome'
+
+" }}}
+" {{{ Php Complete
+let g:phpcomplete_parse_docblock_comments=1
 " }}}
 " }}}
 
