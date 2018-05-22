@@ -47,6 +47,7 @@ Plugin 'ryanoasis/vim-devicons'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'shawncplus/phpcomplete.vim'
+Plugin 'klen/python-mode'
 
 
 
