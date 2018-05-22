@@ -7,7 +7,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+ZSH_THEME="agnoster_custom"
 DEFAULT_USER=`whoami`
 
 # Uncomment the following line to use case-sensitive completion.
@@ -27,7 +27,7 @@ DEFAULT_USER=`whoami`
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
@@ -62,6 +62,10 @@ export PATH=~/.local/bin:$PATH
 export PYTHONPATH=~/git/CowPattie
 export PYTHONPATH=~/git/keys-please:$PYTHONPATH
 export PYTHONDONTWRITEBYTECODE=True
+
+# PHP configuration
+export PATH=/usr/local/opt/php@7.1/bin:$PATH
+export PATH=/usr/local/opt/php@7.1/sbin:$PATH
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -155,5 +159,10 @@ export GOPATH="$HOME/go"
 
 # Start tmux
 tmux
+# Rename window to random emoji
+EMOJI=(🐶 🐱 🐭 🐹 🐰 🦊 🐻 🐼 🐨 🐯 🦁 🐮 🐷 🐽 🐸 🐵 🙊 🙉 🙊 🐒 🐔 🐧 🐦 🐤 🐣 🐥 🦆 🦅 🦉 🦇 🐺 🐗 🐴 🦄 🐝 🐛 🦋 🐌 🐚 🐞 🐜 🕷 🕸 🐢 🐍 🦎 🦂 🦀 🦑 🐙 🦐 🐠 🐟 🐡 🐬 🦈 🐳 🐋 🐊 🐆 🐅 🐃 🐂 🐄 🦌 🐪 🐫 🐘 🦏 🦍 🐎 🐖 🐐 🐏 🐑 🐕 🐩 🐈 🐓 🦃 🕊 🐇 🐁 🐀 🐿 🐾 🐉 🐲);
+RANDOM_EMOJI=${EMOJI[$((RANDOM%88))]};
+
+tmux rename-window -t${TMUX_PANE} "$RANDOM_EMOJI"
 # clear terminal
 clear
