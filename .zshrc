@@ -64,8 +64,8 @@ export PYTHONPATH=~/git/keys-please:$PYTHONPATH
 export PYTHONDONTWRITEBYTECODE=True
 
 # PHP configuration
-export PATH=/usr/local/opt/php@7.1/bin:$PATH
-export PATH=/usr/local/opt/php@7.1/sbin:$PATH
+#export PATH=/usr/local/opt/php@7.1/bin:$PATH
+#export PATH=/usr/local/opt/php@7.1/sbin:$PATH
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -123,7 +123,7 @@ alias mongodb_status="sudo systemctl status mongodb"
 alias mongodb_stop="sudo systemctl stop mongodb"
 alias vim="nvim"
 alias dm="docker-machine"
-alias cat="ccat"
+#alias cat="ccat"
 
 ##################################
 ###########Custom################
@@ -155,14 +155,22 @@ export PATH="/usr/local/opt/vim@7.4/bin:$PATH"
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:/usr/bin/python"
 export PATH="$PATH:$HOME/go/bin"
+export PATH=/usr/local/php5/bin:$PATH
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+
 export GOPATH="$HOME/go"
 
 # Start tmux
 tmux
 # Rename window to random emoji
-EMOJI=(🐶 🐱 🐭 🐹 🐰 🦊 🐻 🐼 🐨 🐯 🦁 🐮 🐷 🐽 🐸 🐵 🙊 🙉 🙊 🐒 🐔 🐧 🐦 🐤 🐣 🐥 🦆 🦅 🦉 🦇 🐺 🐗 🐴 🦄 🐝 🐛 🦋 🐌 🐚 🐞 🐜 🕷 🕸 🐢 🐍 🦎 🦂 🦀 🦑 🐙 🦐 🐠 🐟 🐡 🐬 🦈 🐳 🐋 🐊 🐆 🐅 🐃 🐂 🐄 🦌 🐪 🐫 🐘 🦏 🦍 🐎 🐖 🐐 🐏 🐑 🐕 🐩 🐈 🐓 🦃 🕊 🐇 🐁 🐀 🐿 🐾 🐉 🐲);
-RANDOM_EMOJI=${EMOJI[$((RANDOM%88))]};
+#EMOJI=(🐶 🐱 🐭 🐹 🐰 🦊 🐻 🐼 🐨 🐯 🦁 🐮 🐷 🐽 🐸 🐵 🙊 🙉 🙊 🐒 🐔 🐧 🐦 🐤 🐣 🐥 🦆 🦅 🦉 🦇 🐺 🐗 🐴 🦄 🐝 🐛 🦋 🐌 🐚 🐞 🐜 🕷 🕸 🐢 🐍 🦎 🦂 🦀 🦑 🐙 🦐 🐠 🐟 🐡 🐬 🦈 🐳 🐋 🐊 🐆 🐅 🐃 🐂 🐄 🦌 🐪 🐫 🐘 🦏 🦍 🐎 🐖 🐐 🐏 🐑 🐕 🐩 🐈 🐓 🦃 🕊 🐇 🐁 🐀 🐿 🐾 🐉 🐲);
+#RANDOM_EMOJI=${EMOJI[$((RANDOM%88))]};
 
-tmux rename-window -t${TMUX_PANE} "$RANDOM_EMOJI"
+#tmux rename-window -t${TMUX_PANE} "$RANDOM_EMOJI"
 # clear terminal
 clear
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

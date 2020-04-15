@@ -2,57 +2,57 @@
 " Folding {{{
 set modelines=1 " Connects to bottom line of this file
 " }}}
-" Vundle {{{
+" Vim-Plug {{{
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
 
 "set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 " alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-"Plugin 'Lokaltog/vim-powerline'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'fholgado/minibufexpl.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-"Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-surround'
-Plugin 'mbbill/undotree'
-Plugin 'vim-scripts/csv.vim'
-Plugin 'xolox/vim-misc'
-Plugin 'ervandew/matchem'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'fatih/vim-go'
-Plugin 'sebdah/vim-delve'
-Plugin 'tpope/vim-git'
-Plugin 'JamshedVesuna/vim-markdown-preview'
-Plugin 'mileszs/ack.vim'
-Plugin 'ryanoasis/vim-devicons'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-fugitive'
-Plugin 'shawncplus/phpcomplete.vim'
-Plugin 'klen/python-mode'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+"Plug 'Valloric/YouCompleteMe'
+"Plug 'davidhalter/jedi-vim'
+Plug 'fholgado/minibufexpl.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'majutsushi/tagbar'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-surround'
+Plug 'mbbill/undotree'
+Plug 'vim-scripts/csv.vim'
+Plug 'xolox/vim-misc'
+Plug 'ervandew/matchem'
+Plug 'tmhedberg/SimpylFold'
+Plug 'godlygeek/tabular'
+Plug 'fatih/vim-go'
+Plug 'sebdah/vim-delve'
+Plug 'tpope/vim-git'
+Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'mileszs/ack.vim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'shawncplus/phpcomplete.vim'
+Plug 'klen/python-mode'
+Plug 'xolox/vim-notes'
+Plug 'arcticicestudio/nord-vim'
+" Add homebrew fzf to the vim path:
+set rtp+=/usr/local/opt/fzf
+Plug 'junegunn/fzf.vim'
+Plug 'prettier/vim-prettier'
+"Plug 'Quramy/tsuquyomi'
+Plug 'Shougo/vimproc.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+call plug#end()              " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -63,6 +63,7 @@ filetype plugin indent on    " required
 " Colors and Look {{{
 " Line Numbers {{{
 set number  " show line numbers
+set relativenumber  " show relative line numbers
 set tw=79   " width of document (used by gd)
 set nowrap  " don't automatically wrap on load
 set fo-=t   " don't automatically wrap text when typing
@@ -79,7 +80,8 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 " wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
 
 set t_Co=256
-color wombat256mod
+"color wombat256mod
+color nord
 " }}}
 " Syntax {{{
 " Enable syntax highlighting
@@ -265,19 +267,16 @@ vnoremap <space> zf
 " rspec {{{
 map <leader>r :! rspec % <cr>
 " }}}
-
 " json formatting {{{
 nmap <leader>j :%!python -m json.tool <cr>
 " }}}
-
-
 " }}}
 
 " Plugin settings and help {{{
 " Airline {{{
 set noshowcmd
 set laststatus=2
-let g:airline_theme='badwolf'
+let g:airline_theme='nord'
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#ycm#enabled = 1
@@ -289,7 +288,10 @@ set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
 set wildignore+=*.coverprofile
-let g:ctrlp_custom_ignore = 'vendor'
+set wildignore+=vendor
+"let g:ctrlp_custom_ignore = 'vendor'
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
+
 " }}}
 " Jedi {{{
 let g:jedi#usages_command = "<leader>z"
@@ -354,12 +356,12 @@ autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
 autocmd FileType c,cpp :set foldmethod=syntax
 " }}}
 " YouCompleteMe {{{
-let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+let g:ycm_path_to_python_interpreter = '/Users/jp-aib/.pyenv/shims/python'
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_server_use_vim_stdout = 0
 " }}}
 " {{{ Markdown
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+"autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 "autocmd BufNewFile,BufReadPost *.md set colorscheme=morning
 let g:tagbar_type_markdown = {
     \ 'ctagstype' : 'markdown',
@@ -378,6 +380,150 @@ let vim_markdown_preview_browser='Google Chrome'
 " }}}
 " {{{ Php Complete
 let g:phpcomplete_parse_docblock_comments=1
+" }}}
+" {{{ Vim-notes
+let g:notes_directories = ['~/Documents/notes']
+" }}}
+" {{{ Vim-Plug
+" TextEdit might fail if hidden is not set.
+set hidden
+
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+
+" Give more space for displaying messages.
+set cmdheight=2
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current line.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Introduce function text object
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+" Use <TAB> for selections ranges.
+" NOTE: Requires 'textDocument/selectionRange' support from the language server.
+" coc-tsserver, coc-python are the examples of servers that support it.
+nmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <TAB> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+"set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Mappings using CoCList:
+" Show all diagnostics.
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " }}}
 " }}}
 
