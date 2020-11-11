@@ -13,41 +13,38 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-"Plug 'Valloric/YouCompleteMe'
-"Plug 'davidhalter/jedi-vim'
 Plug 'fholgado/minibufexpl.vim'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-surround'
 Plug 'mbbill/undotree'
 Plug 'vim-scripts/csv.vim'
 Plug 'xolox/vim-misc'
 Plug 'ervandew/matchem'
-Plug 'tmhedberg/SimpylFold'
-Plug 'godlygeek/tabular'
 Plug 'fatih/vim-go'
-Plug 'sebdah/vim-delve'
 Plug 'tpope/vim-git'
-Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'mileszs/ack.vim'
-Plug 'ryanoasis/vim-devicons'
-Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'shawncplus/phpcomplete.vim'
-Plug 'klen/python-mode'
 Plug 'xolox/vim-notes'
 Plug 'arcticicestudio/nord-vim'
 " Add homebrew fzf to the vim path:
-set rtp+=/usr/local/opt/fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'prettier/vim-prettier'
-"Plug 'Quramy/tsuquyomi'
 Plug 'Shougo/vimproc.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ryanoasis/vim-devicons'
+Plug 'leafgarland/typescript-vim'
+Plug 'jparise/vim-graphql'
+Plug 'posva/vim-vue'
+if has('nvim') || has('patch-8.0.902')
+  Plug 'mhinz/vim-signify'
+else
+  Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+endif
 
 
 
@@ -63,7 +60,6 @@ filetype plugin indent on    " required
 " Colors and Look {{{
 " Line Numbers {{{
 set number  " show line numbers
-set relativenumber  " show relative line numbers
 set tw=79   " width of document (used by gd)
 set nowrap  " don't automatically wrap on load
 set fo-=t   " don't automatically wrap text when typing
@@ -102,7 +98,7 @@ set wildmenu
 set wildmode=full
 " }}}
 " Shell {{{
-set shell=/usr/local/bin/zsh
+set shell=/usr/bin/zsh
 " }}}
 " Copy & Paste {{{
 " When you want to paste large blocks of code into vim, press F2 before you
@@ -112,7 +108,7 @@ set shell=/usr/local/bin/zsh
 "nnoremap <leader>Y "+P
 "nnoremap <leader>P "+P
 set pastetoggle=<F2>
-set clipboard=unnamed
+set clipboard=unnamedplus
 " }}}
 " Mouse and backspace {{{
 set mouse=a  " on OSX press ALT and click
@@ -134,9 +130,9 @@ set undolevels=700
 " Real programmers don't use TABs but spaces
 set softtabstop=4
 set shiftwidth=4
-au BufRead,BufNewfile *.rb set tabstop=2
-au BufRead,BufNewfile *.rb set softtabstop=2
-au BufRead,BufNewfile *.rb set shiftwidth=2
+au BufRead,BufNewfile *.rb,*.ts,*.js set tabstop=2
+au BufRead,BufNewfile *.rb,*.ts,*.js set softtabstop=2
+au BufRead,BufNewfile *.rb,*.ts,*.js set shiftwidth=2
 set shiftround
 set expandtab
 " }}}
@@ -166,6 +162,9 @@ au BufRead,BufNewfile *.tsv set nonumber
 " Custom Shortcuts {{{
 " Escape {{{
 imap jk <Esc>l
+" }}}
+" Files {{{
+nnoremap <C-p> :Files<CR>
 " }}}
 " Increment {{{
 noremap <C-s> <C-a>
@@ -278,20 +277,10 @@ set noshowcmd
 set laststatus=2
 let g:airline_theme='nord'
 let g:airline#extensions#tagbar#enabled = 1
-let g:airline#extensions#syntastic#enabled = 1
-let g:airline#extensions#ycm#enabled = 1
+"let g:airline#extensions#syntastic#enabled = 1
+"let g:airline#extensions#ycm#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#enabled = 1
-" }}}
-" Ctrlp {{{
-set wildignore+=*.pyc
-set wildignore+=*_build/*
-set wildignore+=*/coverage/*
-set wildignore+=*.coverprofile
-set wildignore+=vendor
-"let g:ctrlp_custom_ignore = 'vendor'
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
-
 " }}}
 " Jedi {{{
 let g:jedi#usages_command = "<leader>z"
@@ -303,8 +292,10 @@ map <leader>n :NERDTreeToggle<CR>
 let g:NERDTreeDisableFileExtensionHighlight = 1
 let g:NERDTreeDisableExactMatchHighlight = 1
 let g:NERDTreeDisablePatternMatchHighlight = 1
+let g:NERDTreeWinSize=50
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" Auto Open NerdTree
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " }}}
 " Surround {{{
 " cs"' to change from "Hello world" to 'Hello world'
@@ -318,16 +309,15 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " }}}
 " Tagbar {{{
 nmap <leader>t :TagbarToggle<CR>
+"let g:tagbar_ctags_bin="/usr/bin/ctags"
 " }}}
 " Scratch {{{
 "scratch.vim
 "gs to open the scratch window or :Scratch
 " }}}
 " UndoTree {{{
-"if has("persistent_undo")
-    "set undodir='~/.undodir/'
-    "set undofile
-"endif
+set undodir="/home/jonathan/.undodir/"
+set undofile
 nnoremap <leader>u :UndotreeToggle<cr>
 " }}}
 " Tabular {{{
@@ -363,6 +353,24 @@ let g:ycm_server_use_vim_stdout = 0
 " {{{ Markdown
 "autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 "autocmd BufNewFile,BufReadPost *.md set colorscheme=morning
+let g:tagbar_type_typescript = {                                                  
+  \ 'ctagsbin' : 'tstags',                                                        
+  \ 'ctagsargs' : '-f-',                                                           
+  \ 'kinds': [                                                                     
+    \ 'e:enums:0:1',                                                               
+    \ 'f:function:0:1',                                                            
+    \ 't:typealias:0:1',                                                           
+    \ 'M:Module:0:1',                                                              
+    \ 'I:import:0:1',                                                              
+    \ 'i:interface:0:1',                                                           
+    \ 'C:class:0:1',                                                               
+    \ 'm:method:0:1',                                                              
+    \ 'p:property:0:1',                                                            
+    \ 'v:variable:0:1',                                                            
+    \ 'c:const:0:1',                                                              
+  \ ],                                                                            
+  \ 'sort' : 0                                                                    
+\ }   
 let g:tagbar_type_markdown = {
     \ 'ctagstype' : 'markdown',
     \ 'kinds' : [
@@ -375,7 +383,7 @@ let g:tagbar_type_markdown = {
 " {{{ Markdown Preview
 let vim_markdown_preview_hotkey='<C-w>'
 let vim_markdown_preview_github=1
-let vim_markdown_preview_browser='Google Chrome'
+"let vim_markdown_preview_browser='Google Chrome'
 
 " }}}
 " {{{ Php Complete
@@ -383,6 +391,7 @@ let g:phpcomplete_parse_docblock_comments=1
 " }}}
 " {{{ Vim-notes
 let g:notes_directories = ['~/Documents/notes']
+"let g:notes_directories = ['/run/user/1000/gvfs/google-drive:host=gmail.com,user=poisson.jonathan777/1QcP5UbMVfwTFQBKE1KlYOG5LUW8sraYU']
 " }}}
 " {{{ Vim-Plug
 " TextEdit might fail if hidden is not set.
@@ -524,6 +533,7 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+unmap! 
 " }}}
 " }}}
 
