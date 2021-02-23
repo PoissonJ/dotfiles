@@ -1,6 +1,6 @@
 [user]
-	name = Jonathan
-	email = poisson.jonathan777@gmail.com
+	name = Jonathan Poisson
+	email = jpoisson@obmedia.com
 [push]
 	default = simple
 [core]
@@ -11,4 +11,4 @@
     lg = !"git lg1"
 
 [credential]
-	helper = cache --timeout=3600
+	helper = osxkeychain

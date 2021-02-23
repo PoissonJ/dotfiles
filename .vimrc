@@ -46,6 +46,11 @@ else
   Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
 endif
 
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'idanarye/vim-merginal'
+
 
 
 " All of your Plugins must be added before the following line
@@ -164,7 +169,8 @@ au BufRead,BufNewfile *.tsv set nonumber
 imap jk <Esc>l
 " }}}
 " Files {{{
-nnoremap <C-p> :Files<CR>
+"let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+nnoremap <C-p> :GFiles --cached --others --exclude-standard<CR>
 " }}}
 " Increment {{{
 noremap <C-s> <C-a>
@@ -337,18 +343,11 @@ let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
 
 
-"YouCompleteMe
-" }}}
 " Simpyl Fold {{{
 let g:SimpylFold_docstring_preview = 1
 autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
 autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
 autocmd FileType c,cpp :set foldmethod=syntax
-" }}}
-" YouCompleteMe {{{
-let g:ycm_path_to_python_interpreter = '/Users/jp-aib/.pyenv/shims/python'
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_server_use_vim_stdout = 0
 " }}}
 " {{{ Markdown
 "autocmd BufNewFile,BufReadPost *.md set filetype=markdown

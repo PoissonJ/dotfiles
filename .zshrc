@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 [[ $TERM = "xterm" ]] && { tmux && exit 0; }
 #
 # Path to your oh-my-zsh installation.
@@ -7,7 +14,8 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster_custom"
+#ZSH_THEME="agnoster_custom"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 DEFAULT_USER=`whoami`
 
 # Uncomment the following line to use case-sensitive completion.
@@ -123,7 +131,10 @@ alias mongodb_status="sudo systemctl status mongodb"
 alias mongodb_stop="sudo systemctl stop mongodb"
 alias vim="nvim"
 alias dm="docker-machine"
-#alias cat="ccat"
+alias cat="ccat"
+alias gc='(){ git checkout $1 ;}'
+alias gcn='(){ git checkout -b $1 ;}'
+alias mysql='mycli'
 
 ##################################
 ###########Custom################
@@ -155,6 +166,7 @@ export PATH="/usr/local/opt/vim@7.4/bin:$PATH"
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:/usr/bin/python"
 export PATH="$PATH:$HOME/go/bin"
+export PATH="$PATH:/usr/local/go/bin"
 export PATH=/usr/local/php5/bin:$PATH
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
@@ -174,3 +186,6 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
