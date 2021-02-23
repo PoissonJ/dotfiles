@@ -23,3 +23,7 @@ color stat-untracked yellow default
 
 # }}}
 
+# Binds {{{
+bind status P :!git push
+#}}}
+
