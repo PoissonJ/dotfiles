@@ -83,6 +83,7 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 set t_Co=256
 "color wombat256mod
 color nord
+autocmd ColorScheme * highlight Visual ctermbg=LightCyan
 " }}}
 " Syntax {{{
 " Enable syntax highlighting
@@ -183,6 +184,8 @@ let mapleader = ","
 " }}}
 " Spelling {{{
 nmap <F6> :setlocal spell! spelllang=en<CR>
+autocmd FileType markdown setlocal spell
+autocmd FileType gitcommit setlocal spell
 " }}}
 " Tabs {{{
 " Reset 4 spaces to 2 spaces

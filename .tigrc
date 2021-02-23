@@ -4,6 +4,8 @@
 
 set horizontal-scroll = 33%
 set line-graphics = yes
+set main-view-date = custom
+set main-view-date-format = "%Y-%m-%d %H:%M"
 
 # }}}
 
@@ -11,8 +13,8 @@ set line-graphics = yes
 color cursor white black
 color status white default
 color title-focus white black
-color date yellow default
-color author green default
+color date blue default
+color author cyan default
 color main-head magenta default
 color main-tag magenta default
 color stat-staged green default
