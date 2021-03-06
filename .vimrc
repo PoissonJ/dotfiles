@@ -19,6 +19,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-surround'
+Plug 'softoika/ngswitcher.vim'
 Plug 'mbbill/undotree'
 Plug 'vim-scripts/csv.vim'
 Plug 'xolox/vim-misc'
@@ -35,7 +36,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'prettier/vim-prettier'
 Plug 'Shougo/vimproc.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-lockfile' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'leafgarland/typescript-vim'
 Plug 'jparise/vim-graphql'
@@ -171,10 +173,13 @@ imap jk <Esc>l
 " }}}
 " Files {{{
 "let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+let g:fzf_preview_window = 'right:60%'
 nnoremap <C-p> :GFiles --cached --others --exclude-standard<CR>
-" }}}
-" Increment {{{
-noremap <C-s> <C-a>
+nnoremap \ :Ag<SPACE>
+
+"Previous file
+nnoremap <BS> <C-^>
+
 " }}}
 " White Space{{{
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
