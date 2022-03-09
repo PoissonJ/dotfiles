@@ -5,7 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-[[ $TERM = "xterm" ]] && { tmux && exit 0; }
+#[[ $TERM = "xterm" ]] && { tmux && exit 0; }
 #
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -60,15 +60,20 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(gitfast vwrapper vi-mode brew docker)
+plugins=(
+    gitfast
+    vi-mode
+    brew
+    docker
+    zsh-syntaxhighlighting
+    pyenv
+)
 
 # User configuration
 
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/home/jonathan/anaconda/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 export PATH=/usr/local/share/npm/bin:$PATH
 export PATH=~/.local/bin:$PATH
-export PYTHONPATH=~/git/CowPattie
-export PYTHONPATH=~/git/keys-please:$PYTHONPATH
 export PYTHONDONTWRITEBYTECODE=True
 
 # PHP configuration
@@ -135,6 +140,8 @@ alias cat="ccat"
 alias gc='(){ git checkout $1 ;}'
 alias gcn='(){ git checkout -b $1 ;}'
 alias mysql='mycli'
+alias alacritty='alacritty&'
+alias snowsql='/Applications/SnowSQL.app/Contents/MacOS/snowsql'
 
 ##################################
 ###########Custom################
@@ -143,10 +150,16 @@ alias mysql='mycli'
 # Map 'jk' to escape to vi-mode instead of escape
 bindkey -M viins 'jk' vi-cmd-mode
 
-# figlet -f slant "Poisson"
-# screenfetch
+# Auto complete settings
+#source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+#ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+#ZSH_AUTOSUGGEST_USE_ASYNC=1
+#bindkey '^ ' autosuggest-accept
 
-export NVM_DIR="/home/jonathan/.nvm"
+# Syntax Highlighting
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export NVM_DIR="/Users/jp-aib/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 # where to store our virtual envs
 export WORKON_HOME=$HOME/virtenvs
@@ -159,7 +172,6 @@ source $HOME/.local/bin/virtualenvwrapper.sh
 . /usr/local/etc/profile.d/z.sh
 
 #Sol config
-alias sol="KUBECONFIG=~/.kube/solconfig kubectl"
 export PATH="/usr/local/opt/vim@7.4/bin:$PATH"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
@@ -181,11 +193,17 @@ tmux
 #tmux rename-window -t${TMUX_PANE} "$RANDOM_EMOJI"
 # clear terminal
 clear
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# added by Snowflake SnowSQL installer v1.2
+export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -1,11 +1,9 @@
 " Required {{{
 " Folding {{{
-set modelines=1 " Connects to bottom line of this file
 " }}}
 " Vim-Plug {{{
 set nocompatible              " be iMproved, required
 filetype off                  " required
-
 
 "set the runtime path to include Vundle and initialize
 call plug#begin('~/.vim/plugged')
@@ -13,7 +11,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'fholgado/minibufexpl.vim'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -29,12 +26,19 @@ Plug 'tpope/vim-git'
 Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'shawncplus/phpcomplete.vim'
-Plug 'xolox/vim-notes'
+
+" TODO
+Plug 'vuciv/vim-bujo'
+
 Plug 'arcticicestudio/nord-vim'
 " Add homebrew fzf to the vim path:
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'stsewd/fzf-checkout.vim'
+
 Plug 'prettier/vim-prettier'
+Plug 'sbdchd/neoformat'
+
 Plug 'Shougo/vimproc.vim'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'yarn install --frozen-lockfile' }
@@ -50,8 +54,13 @@ endif
 
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'idanarye/vim-merginal'
+Plug 'iberianpig/tig-explorer.vim'
+
+" Using treesitter for folding
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 
 
 
@@ -85,7 +94,7 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 set t_Co=256
 "color wombat256mod
 color nord
-autocmd ColorScheme * highlight Visual ctermbg=LightCyan
+:highlight Visual ctermbg=lightcyan
 " }}}
 " Syntax {{{
 " Enable syntax highlighting
@@ -234,9 +243,8 @@ map <c-l> <c-w>l
 map <c-h> <c-w>h
 " }}}
 
-" Tabs {{{
-map <Leader>n <esc>:tabprevious<CR>
-map <Leader>m <esc>:tabnext<CR>
+" Buffers {{{
+map <Leader>M <esc>:bp\|bd #<CR>
 " }}}
 
 " }}}"}}}
@@ -274,8 +282,6 @@ inoremap <silent><C-j> <C-R>=OmniPopup('\<C-j>')<CR>
 inoremap <silent><C-k> <C-R>=OmniPopup('\<C-k>')<CR>
 " }}}
 " Folds {{{
-nnoremap <space> za
-vnoremap <space> zf
 " }}}
 " rspec {{{
 map <leader>r :! rspec % <cr>
@@ -295,6 +301,38 @@ let g:airline#extensions#tagbar#enabled = 1
 "let g:airline#extensions#ycm#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#exclude_preview = 0
+let g:airline#extensions#tabline#buffers_label = 'files'
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <leader>0 <Plug>AirlineSelectTab0
+nmap <leader>n <Plug>AirlineSelectPrevTab
+nmap <leader>m <Plug>AirlineSelectNextTab
+let g:airline#extensions#tabline#keymap_ignored_filetypes =
+    \ ['vimfiler', 'nerdtree']
+let g:airline#extensions#tabline#buffer_idx_format = {
+        \ '0': '0 ',
+        \ '1': '1 ',
+        \ '2': '2 ',
+        \ '3': '3 ',
+        \ '4': '4 ',
+        \ '5': '5 ',
+        \ '6': '6 ',
+        \ '7': '7 ',
+        \ '8': '8 ',
+        \ '9': '9 '
+        \}
 " }}}
 " Jedi {{{
 let g:jedi#usages_command = "<leader>z"
@@ -302,7 +340,7 @@ let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
 " }}}
 " NERDtree {{{
-map <leader>n :NERDTreeToggle<CR>
+map <leader>N :NERDTreeToggle<CR>
 let g:NERDTreeDisableFileExtensionHighlight = 1
 let g:NERDTreeDisableExactMatchHighlight = 1
 let g:NERDTreeDisablePatternMatchHighlight = 1
@@ -340,9 +378,18 @@ vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:\zs<CR>
 vmap <Leader>a: :Tabularize /:\zs<CR>
 " }}}
-" Minibufexpl {{{
-nmap <leader>M :MBEbd<CR>
-nmap <leader>T :MBEToggle<cr>
+" vim TODO {{{
+nmap <Leader>tc <Plug>BujoChecknormal
+nmap <Leader>ta <Plug>BujoAddnormal
+let g:bujo#todo_file_path = $HOME . "/.cache/bujo"
+let g:bujo#window_width = 60
+autocmd bufnewfile todo.md call append(1, '') 
+autocmd bufnewfile todo.md call append(2, '  ______ ____   ____   ____') 
+autocmd bufnewfile todo.md call append(3, ' /_  __ / __ \ / __ \ / __ \') 
+autocmd bufnewfile todo.md call append(4, '  / /  / / / // / / // / / /') 
+autocmd bufnewfile todo.md call append(5, ' / /  / /_/ // /_/ // /_/ /') 
+autocmd bufnewfile todo.md call append(6, '/_/   \____//_____/ \____/.md') 
+autocmd bufnewfile todo.md call append(8, 'Date: ') 
 " }}}
 " Syntastic {{{
 let g:syntastic_python_flake8_args='--ignore=E501, W391'
@@ -351,12 +398,6 @@ let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
 
 
-" Simpyl Fold {{{
-let g:SimpylFold_docstring_preview = 1
-autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
-autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
-autocmd FileType c,cpp :set foldmethod=syntax
-" }}}
 " {{{ Markdown
 "autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 "autocmd BufNewFile,BufReadPost *.md set colorscheme=morning
@@ -544,5 +585,5 @@ unmap!
 " }}}
 " }}}
 
+
 " Create the folding you see above :)
-" vim:foldmethod=marker:foldlevel=0
