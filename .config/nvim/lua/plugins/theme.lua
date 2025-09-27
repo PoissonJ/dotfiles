@@ -1,0 +1,1 @@
+/home/jpoisson/.config/omarchy/current/theme/neovim.lua
