@@ -3,5 +3,5 @@
     "type": "command",
     "command": "bash ~/.claude/statusline-git.sh"
   },
-  "model": "opus"
+  "alwaysThinkingEnabled": true
 }
