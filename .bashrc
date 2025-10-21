@@ -8,3 +8,5 @@ source ~/.local/share/omarchy/default/bash/rc
 # alias p='python'
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 alias config='/usr/bin/git --git-dir=/home/jpoisson/.cfg/ --work-tree=/home/jpoisson'
+alias gco='git checkout'
+alias gcob='git checkout -b'
